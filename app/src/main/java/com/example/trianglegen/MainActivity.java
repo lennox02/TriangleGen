@@ -37,4 +37,8 @@ public class MainActivity extends AppCompatActivity {
             return ("not a triangle");
         }
     };
+
+    static String scalene(){
+        //todo
+    }
 }
