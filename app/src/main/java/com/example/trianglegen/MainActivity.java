@@ -18,6 +18,14 @@ public class MainActivity extends AppCompatActivity {
         //this should work
         double[] userInputs = {3,10,8};
 
+        for(double input : userInputs){
+            if(isOneToOneHundred(input)) {
+                //todo error message here
+            }
+        }
+
+
+
         String displayTriangleType = "";
         displayTriangleType = findTriangleType(userInputs);
 
@@ -37,4 +45,14 @@ public class MainActivity extends AppCompatActivity {
             return ("not a triangle");
         }
     };
+
+    public static boolean isOneToOneHundred(double number) {
+
+        if(number >= 1 && number <= 100){
+            return true;
+        }
+
+        return false;
+
+    }
 }
