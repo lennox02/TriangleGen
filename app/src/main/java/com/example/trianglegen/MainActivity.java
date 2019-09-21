@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         if(sides[0] + sides[1] > sides[2]){
             return true;
         }else {
+            //todo not a triangle message
             return false;
         }
 
@@ -81,6 +82,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
+
+    }
+
+    public static String triangleType(double[] sides) {
+
+         if(isEquilateral(sides)){
+             //todo replace with success message
+             return "Equilateral";
+         }
+
+        //todo replace with error message
+         return "Triangle Type Not Found";
+
+    }
+
+    public static boolean isEquilateral(double[] sides) {
+
+        if(sides[0] == sides[1] && sides[0] == sides[2]){
+            return true;
+        }
+
+        return false;
 
     }
 
