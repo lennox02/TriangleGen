@@ -40,7 +40,7 @@ public class MainActivityTest {
 
         MainActivity tester = new MainActivity();
 
-        //equillateral
+        //equilateral
         double[] userInputs = {3,3,3};
         assertTrue(tester.isTriangle(userInputs));
 
@@ -74,6 +74,29 @@ public class MainActivityTest {
 
         double[] userInputs3 = {3,3,3};
         assertTrue(tester.isThreeInputs(userInputs3));
+
+    }
+
+    @Test
+    public void isEquilateralTest() {
+
+        MainActivity tester = new MainActivity();
+
+        //definitely Equilateral
+        double[] userInputs = {3,3,3};
+        assertTrue(tester.isEquilateral(userInputs));
+
+        //Scalene
+        double[] userInputs2 = {3,5,7};
+        assertFalse(tester.isEquilateral(userInputs2));
+
+        //Isosceles
+        double[] userInputs3 = {3,3,5};
+        assertFalse(tester.isEquilateral(userInputs3));
+
+        //Not a triangle
+        double[] userInputs4 = {4,4,8};
+        assertFalse(tester.isEquilateral(userInputs4));
 
     }
 
