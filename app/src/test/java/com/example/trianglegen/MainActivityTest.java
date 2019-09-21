@@ -35,4 +35,29 @@ public class MainActivityTest {
         assertFalse(tester.isOneToOneHundred(200));
     }
 
+    @Test
+    public void isTriangleTest() {
+
+        MainActivity tester = new MainActivity();
+
+        //equillateral
+        double[] userInputs = {3,3,3};
+        assertTrue(tester.isTriangle(userInputs));
+
+        //scalene
+        double[] userInputs2 = {3,5,7};
+        assertTrue(tester.isTriangle(userInputs2));
+
+        //isosceles
+        double[] userInputs3 = {3,3,5};
+        assertTrue(tester.isTriangle(userInputs3));
+
+        double[] userInputs4 = {3,4,8};
+        assertFalse(tester.isTriangle(userInputs4));
+
+        double[] userInputs5 = {4,4,8};
+        assertFalse(tester.isTriangle(userInputs5));
+
+    }
+
 }

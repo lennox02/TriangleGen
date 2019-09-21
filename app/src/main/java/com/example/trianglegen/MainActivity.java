@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -24,7 +26,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        Arrays.sort(userInputs);
 
+        if(!isTriangle(userInputs)) {
+            //todo return error message that sides are not triangle
+        }
 
         String displayTriangleType = "";
         displayTriangleType = findTriangleType(userInputs);
@@ -55,4 +61,15 @@ public class MainActivity extends AppCompatActivity {
         return false;
 
     }
+
+    public static boolean isTriangle(double [] sides) {
+
+        if(sides[0] + sides[1] > sides[2]){
+            return true;
+        }else {
+            return false;
+        }
+
+    }
+
 }
