@@ -62,13 +62,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static boolean isTriangle(double [] sides) {
+    public static boolean isTriangle(double[] sides) {
 
         if(sides[0] + sides[1] > sides[2]){
             return true;
         }else {
             return false;
         }
+
+    }
+
+    public static boolean isThreeInputs(double[] inputs) {
+
+        int inputsLength = inputs.length;
+
+        if(inputsLength < 3 || inputsLength > 3) {
+            return false;
+        }
+
+        return true;
 
     }
 

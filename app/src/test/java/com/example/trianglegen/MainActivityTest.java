@@ -60,4 +60,21 @@ public class MainActivityTest {
 
     }
 
+    @Test
+    public void isThreeInputsTest() {
+
+        MainActivity tester = new MainActivity();
+
+        //less than three inputs
+        double[] userInputs = {3,3};
+        assertFalse(tester.isThreeInputs(userInputs));
+
+        double[] userInputs2 = {3,3,3,3};
+        assertFalse(tester.isThreeInputs(userInputs2));
+
+        double[] userInputs3 = {3,3,3};
+        assertTrue(tester.isThreeInputs(userInputs3));
+
+    }
+
 }
