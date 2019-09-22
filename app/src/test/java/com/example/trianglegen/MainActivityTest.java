@@ -100,4 +100,31 @@ public class MainActivityTest {
 
     }
 
+    @Test
+    public void isIsoscelesTest() {
+
+        MainActivity tester = new MainActivity();
+
+        //Equilateral
+        double[] userInputs = {3,3,3};
+        assertFalse(tester.isIsosceles(userInputs));
+
+        //Scalene
+        double[] userInputs2 = {3,5,7};
+        assertFalse(tester.isIsosceles(userInputs2));
+
+        //Isosceles
+        double[] userInputs3 = {3,3,5};
+        assertTrue(tester.isIsosceles(userInputs3));
+
+        //Isosceles
+        double[] userInputs4 = {3,5,3};
+        assertTrue(tester.isIsosceles(userInputs4));
+
+        //Isosceles
+        double[] userInputs5 = {5,3,3};
+        assertTrue(tester.isIsosceles(userInputs5));
+
+    }
+
 }

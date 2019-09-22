@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
          if(isEquilateral(sides)){
              //todo replace with success message
              return "Equilateral";
+         } else if(isIsosceles(sides)){
+             return "Isosceles";
          }
 
         //todo replace with error message
@@ -100,6 +102,20 @@ public class MainActivity extends AppCompatActivity {
     public static boolean isEquilateral(double[] sides) {
 
         if(sides[0] == sides[1] && sides[0] == sides[2]){
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public static boolean isIsosceles(double[] sides) {
+
+        if(
+            (sides[0] == sides[1] && sides[0] != sides[2]) ||
+            (sides[1] == sides[2] && sides[1] != sides[0]) ||
+            (sides[2] == sides[0] && sides[2] != sides[1])
+        ){
             return true;
         }
 
