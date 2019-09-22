@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
             //todo return error message that sides are not triangle
         }
 
+        //todo return this success message to interface
+        String triangleType = triangleType(userInputs);
+
         String displayTriangleType = "";
         displayTriangleType = findTriangleType(userInputs);
 
@@ -92,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
              return "Equilateral";
          } else if(isIsosceles(sides)){
              return "Isosceles";
+         } else if(isScalene(sides)){
+             return "Scalene";
          }
 
         //todo replace with error message
@@ -116,6 +121,16 @@ public class MainActivity extends AppCompatActivity {
             (sides[1] == sides[2] && sides[1] != sides[0]) ||
             (sides[2] == sides[0] && sides[2] != sides[1])
         ){
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public static boolean isScalene(double[] sides) {
+
+        if(sides[0] != sides[1] && sides[0] != sides[2] && sides[1] != sides[2]){
             return true;
         }
 

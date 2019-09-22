@@ -127,4 +127,31 @@ public class MainActivityTest {
 
     }
 
+    @Test
+    public void isScaleneTest() {
+
+        MainActivity tester = new MainActivity();
+
+        //Equilateral
+        double[] userInputs = {3,3,3};
+        assertFalse(tester.isScalene(userInputs));
+
+        //Scalene
+        double[] userInputs2 = {3,5,7};
+        assertTrue(tester.isScalene(userInputs2));
+
+        //Isosceles
+        double[] userInputs3 = {3,3,5};
+        assertFalse(tester.isScalene(userInputs3));
+
+        //Isosceles
+        double[] userInputs4 = {3,5,3};
+        assertFalse(tester.isScalene(userInputs4));
+
+        //Isosceles
+        double[] userInputs5 = {5,3,3};
+        assertFalse(tester.isScalene(userInputs5));
+
+    }
+
 }
