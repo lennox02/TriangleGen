@@ -3,7 +3,10 @@ package com.example.trianglegen;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.Toast;
+import android.view.View;
+import android.util.Log;
 
 import java.util.Arrays;
 
@@ -13,33 +16,45 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        //This should fail
-        //double[] userInputs ={1,5,3};
+    public void sendFeedback(View Button) {
+        EditText txtUserInput1 = findViewById(R.id.txtUserInput1);
+        double UserInput1 = Double.parseDouble(txtUserInput1.getText().toString());
+
+        EditText txtUserInput2 = findViewById(R.id.txtUserInput2);
+        double UserInput2 = Double.parseDouble(txtUserInput2.getText().toString());
+
+        EditText txtUserInput3 = findViewById(R.id.txtUserInput3);
+        double UserInput3 = Double.parseDouble(txtUserInput3.getText().toString());
 
         //this should work
-        double[] userInputs = {3,10,8};
+        double[] userInputs = {UserInput1,UserInput2,UserInput3};
+
+        int validation = 0;
 
         for(double input : userInputs){
-            if(isOneToOneHundred(input)) {
-                //todo error message here
+            if(!isOneToOneHundred(input)) {
+                Toast.makeText(MainActivity.this, "Cannot have input less than 1 or Greater than 100", Toast.LENGTH_LONG).show();
+                validation = 1;
             }
         }
 
-        Arrays.sort(userInputs);
+        if(validation == 0) {
 
-        if(!isTriangle(userInputs)) {
-            //todo return error message that sides are not triangle
+            Arrays.sort(userInputs);
+
+            String displayTriangleType = "";
+            displayTriangleType = findTriangleType(userInputs);
+
+            Toast.makeText(MainActivity.this, displayTriangleType, Toast.LENGTH_LONG).show();
         }
-
-        //todo return this success message to interface
-        String triangleType = triangleType(userInputs);
-
-        String displayTriangleType = "";
-        displayTriangleType = findTriangleType(userInputs);
-
-        Toast.makeText(MainActivity.this, displayTriangleType, Toast.LENGTH_LONG).show();
     }
+
+    public void closeApp(View Text){
+        System.exit(0);
+    }
+
     static String findTriangleType(double[] _userInputs){
 
         double lineA = _userInputs[0], lineB = _userInputs[1], lineC = _userInputs[2];
@@ -49,11 +64,19 @@ public class MainActivity extends AppCompatActivity {
 
         if(lineA + lineB > lineC && lineB + lineC > lineA && lineC +lineA >lineB){
             //TODO: check if scalene, equilateral,and isosceles
-            return ("It's some type of triangle");
+            if(isEquilateral(_userInputs)){
+                return("Sides make an Equilateral!");
+            } else if(isIsosceles(_userInputs)) {
+                return("Sides make an Isosceles!");
+            } else if(isScalene(_userInputs)) {
+                return("Sides make a Scalene!");
+            } else {
+                return("Error! Sides make a triangle but not an Equilateral, Isosceles, or Scalene");
+            }
         }else {
-            return ("not a triangle");
+            return ("Not a triangle");
         }
-    };
+    }
 
     public static boolean isOneToOneHundred(double number) {
 
@@ -85,22 +108,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
-
-    }
-
-    public static String triangleType(double[] sides) {
-
-         if(isEquilateral(sides)){
-             //todo replace with success message
-             return "Equilateral";
-         } else if(isIsosceles(sides)){
-             return "Isosceles";
-         } else if(isScalene(sides)){
-             return "Scalene";
-         }
-
-        //todo replace with error message
-         return "Triangle Type Not Found";
 
     }
 
