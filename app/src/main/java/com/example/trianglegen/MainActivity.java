@@ -3,10 +3,10 @@ package com.example.trianglegen;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
-import android.util.Log;
 
 import java.util.Arrays;
 
@@ -81,10 +81,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void goodbye(String txt){
+
+        TextView message = findViewById(R.id.txtInstruction);
+        message.setText(txt);
+
+    }
+
 
     public void closeApp(View Text){
-        System.exit(0);
+        setContentView(R.layout.goodbye);
+
+        goodbye("Goodbye!");
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run(){
+                System.exit(0);
+            }
+        }, 1000);
+
     }
+
+
 
     static String findTriangleType(double[] _userInputs){
 
